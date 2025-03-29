@@ -1,0 +1,142 @@
+1-Crie um pasta na Pasta Meusdocumentos com o nomedoseuprojeto
+  iniciando o git - transformando sua pasta em um repositorio local
+  git init;
+  
+2-Para verificar os arquivos antes de colocar no git damos o comando
+   git status;
+
+3- Colocando o arquivo no escopo do Projeto git(localmente)
+   git add arquivoexemplo.html
+   ou git . para varios arquivos
+
+4- Save points - Para copiar o arquivo para o git o comando é
+   git commit -a -m "mensagem tipo um comentario" (localmente)
+
+5- para enviar para o git remoto use o comando
+   git push origin main
+
+6- Remova o vínculo com o repositório remoto
+   git remote remove origin
+
+7- Verificando se o remote foi removido
+   git remote -v
+
+8- Para reconectar ou utilizar outro repositorio utilize o comando
+   git remote add origin NOVA_URL_DO_REPOSITORIO.git
+
+9- Remover arquivo do repositorio remoto mas manter localmente
+   git rm --cached arquivo.txt
+   git commit -m "Remove arquivo.txt do controle do Git (mantém local)"
+   git push origin main
+   
+   Observação para remover todos os arquivos apenas do repositorio remoto
+   git rm -r --cached .
+   git clean -fd
+
+10 - clonando Repositorios
+     Crie um novo repositorio no git
+     indique a origem
+     git clone https://github.com/Prof-Joao-Evangelista-73/curso_git_aula22.git
+     
+     Remova o vínculo com o repositório antigo
+     git remote remove origin
+
+     indique o destino
+     https://github.com/Prof-Joao-Evangelista-73/curso_git_repositorio_clonado.git
+     
+     Enviando o conteúdo para o novo repositório
+     git push -u origin main  
+     # Ou "master", dependendo do branch
+     Verifique no Novo repositorio se tudo foi copiado.
+
+
+=================== Relembrando  ===============================
+
+Fazer um branch (ramo) no Git significa criar uma linha de desenvolvimento separada dentro do 
+seu repositório, permitindo que você trabalhe em alterações isoladas sem afetar o código principal 
+(geralmente o branch main ou master).
+
+Para que serve um branch
+Isolar mudanças: Trabalhar em uma funcionalidade ou correção sem bagunçar o código principal.
+
+Colaboração: Várias pessoas podem trabalhar em branches diferentes ao mesmo tempo.
+
+Versionamento: Manter versões estáveis (main) e versões em desenvolvimento (feature, bugfix).
+
+-Um branch é uma ramificação do código principal de um projeto, 
+que permite que os desenvolvedores trabalhem em novas funcionalidades sem comprometer o código 
+já existente. 
+
+
+-O que é uma Feature no Git?
+Em desenvolvimento de software, uma feature (ou funcionalidade) refere-se a uma nova capacidade, 
+melhoria ou componente adicionado ao projeto. No Git, uma feature branch é um branch (ramo) criado 
+especificamente para desenvolver essa funcionalidade de forma isolada, 
+sem afetar o código principal (main/master).
+
+Quando necessário faça com os comandos abaixo:
+Criar um novo branch
+  git branch nome-do-branch  # Cria o branch
+  git checkout nome-do-branch  # Muda para o branch
+  # OU (em um comando só)
+  git checkout -b nome-do-branch  # Cria e muda para o branch
+
+Ver branches existentes
+  git branch  # Lista todos os branches (* indica o atual)  
+
+Enviar o branch para o repositório remoto
+  git push -u origin nome-do-branch
+
+Como criar uma Feature Branch?
+Crie um branch a partir do main:
+
+git checkout main           # Garanta que está no branch principal
+git pull origin main        # Atualize com as últimas mudanças
+git checkout -b feature/nome-da-feature  # Crie e mude para o novo branch
+(Substitua nome-da-feature por algo descritivo, como login-com-google).
+
+Desenvolva e faça commits:
+
+git add .
+git commit -m "Implementa login com Google"
+Envie para o repositório remoto:
+
+git push -u origin feature/nome-da-feature
+
+
+-Exemplo de fluxo com branches
+
+-Você está no main (código estável).
+
+-Cria um branch para uma nova feature:
+
+  git checkout -b feature/login
+
+-Faz commits nesse branch:
+  git add .
+  git commit -m "Adiciona sistema de login"
+
+Quando pronto, une (merge) ao main
+ git checkout main
+ git merge feature/login
+
+-Boas práticas
+Nomeie branches de forma descritiva: feature/chat, bugfix/login-error.
+
+Sincronize com o remoto: Sempre dê git push do branch para não perder trabalho.
+
+Apague branches antigos: Depois do merge, delete-os local e remotamente:
+  git branch -d nome-do-branch  # Local
+  git push origin --delete nome-do-branch  # Remoto
+
+Diferença entre branch, commit e merge
+Branch: Linha independente de desenvolvimento.
+
+Commit: "Snapshot" das alterações em um branch.
+
+Merge: Unir um branch a outro (ex: feature → main).
+
+
+     
+
+
